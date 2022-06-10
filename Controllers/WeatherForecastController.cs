@@ -31,13 +31,13 @@ namespace Logging.Controllers
                     Summary = Summaries[Random.Shared.Next(Summaries.Length)]
                 })
                     .ToArray();
+                throw new Exception("Exception while retriving cities temp");
                 _logger.LogInformation($"Cities Count:{result.Length}");
                 return result;
-
             }
             catch (Exception ex)
             {
-                _logger.LogError($"SOmething went wrong:{ex}");
+                _logger.LogError($"Something went wrong:{ex}");
                 return null;
             }
         }
