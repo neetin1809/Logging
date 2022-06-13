@@ -37,7 +37,6 @@ namespace Logging.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Something went wrong:{ex}");
                 return null;
             }
         }
