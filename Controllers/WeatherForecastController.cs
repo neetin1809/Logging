@@ -11,19 +11,11 @@ namespace Logging.Controllers
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
-        }
-
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
-            _logger.LogInformation("Getting the Temprature");
-            try
-            {
+           
+
                 var result = Enumerable.Range(1, 5).Select(index => new WeatherForecast
                 {
                     Date = DateTime.Now.AddDays(index),
@@ -32,14 +24,8 @@ namespace Logging.Controllers
                 })
                     .ToArray();
                 throw new Exception("Exception while retriving cities temp");
-                _logger.LogInformation($"Cities Count:{result.Length}");
                 return result;
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Something went wrong:{ex}");
-                return null;
-            }
+          
         }
     }
 }
